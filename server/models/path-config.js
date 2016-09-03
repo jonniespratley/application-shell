@@ -1,37 +1,38 @@
 var fs = require('fs');
 var path = require('path');
 
+var sharedStyles = [
+  'http://predixdev.github.io/px-layout/bower_components/px-layout/css/px-layout.css'
+];
 var pathConfigs = {
   '/': {
     view: 'index',
     title: 'Index',
     inlineStyles: getFileContents(['/styles/core.css']),
-    remoteStyles: ['https://fonts.googleapis.com/css?family=Roboto:' +
-      '400,300,700,500,400italic'],
-    remoteScripts: ['/scripts/static-page.js']
+    remoteStyles: sharedStyles,
+    remoteScripts: [
+      '/scripts/static-page.js'
+    ]
   },
   '/url-1': {
     view: 'url-1',
     title: 'URL 1',
     inlineStyles: getFileContents(['/styles/core.css']),
-    remoteStyles: ['https://fonts.googleapis.com/css?family=Roboto:' +
-      '400,300,700,500,400italic'],
+    remoteStyles: sharedStyles,
     remoteScripts: ['/scripts/static-page.js']
   },
   '/url-2': {
     view: 'url-2',
     title: 'URL 2',
     inlineStyles: getFileContents(['/styles/core.css']),
-    remoteStyles: ['https://fonts.googleapis.com/css?family=Roboto:' +
-      '400,300,700,500,400italic'],
+    remoteStyles: sharedStyles,
     remoteScripts: ['/scripts/static-page.js']
   },
   '/app-shell': {
     view: '',
     title: 'App Shell',
     inlineStyles: getFileContents(['/styles/core.css']),
-    remoteStyles: ['https://fonts.googleapis.com/css?family=Roboto:' +
-      '400,300,700,500,400italic'],
+    remoteStyles: sharedStyles,
     remoteScripts: ['/scripts/core.js']
   }
 };

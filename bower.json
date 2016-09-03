@@ -1,0 +1,30 @@
+{
+  "name": "app-shell",
+  "description": "A app shell",
+  "main": "app.js",
+  "authors": [
+    "Jonnie Spratley <jonnie.spratley@ge.com>"
+  ],
+  "license": "Apache Version 2.0",
+  "homepage": "https://github.com/jonniespratley/application-shell",
+  "moduleType": [
+    "es6"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "resolutions": {
+    "polymer": "~1.5.0",
+    "polymer-font-awesome": "master",
+    "px-theme": "1.1.2",
+    "px-typography-design": "^1.1.0"
+  },
+  "dependencies": {
+    "px-layout": "^0.0.7"
+  }
+}

@@ -68,7 +68,7 @@ function startWatchTasks() {
 
 gulp.task('dev', function() {
   GLOBAL.config.env = 'dev';
-  GLOBAL.config.port = 8081;
+  GLOBAL.config.port = 8282;
   return startWatchTasks();
 });
 

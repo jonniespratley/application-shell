@@ -10,12 +10,13 @@ export default class PageController {
     console.log('onUpdate: ', this.path);
   }
 
-  onStart(path) {
-    console.log('onStart: ', path);
-
+  showLoading() {
     // Show loading dialog while we get content
     this.loader.classList.remove('is-hidden');
+  }
 
+  onStart(path) {
+    console.log('onStart: ', path);
     this.updateNavDrawer(path);
 
     fetch('/api' + path)

@@ -1,0 +1,13 @@
+---
+applications:
+  - name: app-shell
+    buildpack: nodejs_buildpack
+    memory: 128M
+    stack: cflinuxfs2
+    path: .
+    command: npm start
+    services:
+      - my_uaa_instance
+    env:
+      NODE_ENV: 'development'
+      DEBUG: '*'

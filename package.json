@@ -1,6 +1,6 @@
 {
   "name": "app-shell",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "license": "Apache Version 2.0",
   "engines": {
@@ -10,7 +10,8 @@
     "start": "node app.js",
     "monitor": "gulp dev",
     "postinstall": "gulp",
-    "deploy": "gcloud preview app deploy app.yaml --promote"
+    "watch": "nodemon server/app.js",
+    "deploy": "cf push"
   },
   "main": "app.js",
   "dependencies": {
@@ -44,5 +45,8 @@
     "run-sequence": "^1.1.4",
     "sw-precache": "^2.2.0",
     "vinyl-source-stream": "^1.1.0"
+  },
+  "devDependencies": {
+    "polybuild": "^1.1.0"
   }
 }
