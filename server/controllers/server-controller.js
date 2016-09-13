@@ -1,7 +1,28 @@
-var path = require('path');
-var express = require('express');
-var exphbs = require('express-handlebars');
+'use strict';
 
+const path = require('path');
+const express = require('express');
+const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
+
+function errorHandler(err, req, res, next) {
+  res.status(500);
+  res.render('error', { error: err });
+}
+
+function clientErrorHandler(err, req, res, next) {
+  if (req.xhr) {
+    res.status(500).send({ error: 'Something failed!' });
+  } else {
+    next(err);
+  }
+}
+
+function logErrors(err, req, res, next) {
+  console.error(err.stack);
+  next(err);
+}
 
 
 function ServerController() {
@@ -37,26 +58,39 @@ function ServerController() {
   // Define static assets path - i.e. styles, scripts etc.
   expressApp.use('/', express.static( path.resolve(__dirname, '../../dist/')));
   expressApp.use('/bower_components', express.static(path.resolve(__dirname, '../../bower_components/')));
+  expressApp.use(bodyParser.urlencoded({
+  	extended: true
+  }));
+  expressApp.use(bodyParser.json());
+  expressApp.use(methodOverride());
+  expressApp.use(logErrors);
+  expressApp.use(clientErrorHandler);
+  expressApp.use(errorHandler);
+
 
   var expressServer = null;
 
-  this.getExpressApp = function () {
+  this.getExpressApp = () => {
     return expressApp;
   };
 
-  this.setExpressServer = function (server) {
+  this.setExpressServer = (server) => {
     expressServer = server;
   };
 
-  this.getExpressServer = function () {
+  this.getExpressServer = () => {
     return expressServer;
   };
 
-  this.getHandleBarsInstance = function () {
+  this.getHandleBarsInstance = () => {
     return handleBarsInstance;
   };
 }
 
+/**
+ * Start the server and set the expressServer to the instance.
+ * @param {Number} port The port to use
+ */
 ServerController.prototype.startServer = function (port) {
   // As a failsafe use port 0 if the input isn't defined
   // this will result in a random port being assigned

@@ -1,5 +1,5 @@
 'use strict';
-
+var log = require('debug')('application-shell:StaticPageController');
 var pathConfigs = require('../models/path-config.js');
 
 function StaticPageController() {
@@ -9,6 +9,7 @@ function StaticPageController() {
 // This method looks at the request path and renders the appropriate handlebars
 // template
 StaticPageController.prototype.onRequest = function (req, res) {
+  log(req.method, req.path);
   var pathConfig = pathConfigs.getConfig(req.path);
   if (!pathConfig) {
     res.status(404).send();
@@ -24,6 +25,7 @@ StaticPageController.prototype.onRequest = function (req, res) {
     return;
   default:
     // Use default layout
+
     res.render(pathConfig.data.view, pathConfig);
     return;
   }

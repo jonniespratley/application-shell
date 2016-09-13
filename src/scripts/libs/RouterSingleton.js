@@ -29,7 +29,13 @@ export default class RouterSingleton {
 
 }
 
+/**
+ * Router class handles client-side history.
+ */
 class Router {
+  /**
+   * @constructor
+   */
   constructor() {
     this.routes = {};
     this.currentPath = null;
@@ -40,7 +46,13 @@ class Router {
     });
   }
 
+  /**
+   * Add a route to the router instance.
+   * @param {String} path The path to add
+   * @param {Object} activity The activity to use when route matches
+   */
   addRoute(path, activity) {
+
     if (this.routes[path]) {
       throw 'A handler already exists for this path: ' + path;
     }
