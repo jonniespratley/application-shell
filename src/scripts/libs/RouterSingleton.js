@@ -52,7 +52,6 @@ class Router {
    * @param {Object} activity The activity to use when route matches
    */
   addRoute(path, activity) {
-
     if (this.routes[path]) {
       throw 'A handler already exists for this path: ' + path;
     }

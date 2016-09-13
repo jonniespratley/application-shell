@@ -27,46 +27,45 @@ export default class Controller {
     }
 
     navigator.serviceWorker.register('/sw.js', {
-        scope: '/'
-      }).then((registration) => {
-        console.log('Service worker is registered.');
+      scope: '/'
+    }).then((registration) => {
+      console.log('Service worker is registered.');
 
-        var isUpdate = false;
+      var isUpdate = false;
 
         // If this fires we should check if there's a new Service Worker
         // waiting to be activated. If so, ask the user to force refresh.
-        if (registration.active) {
-          isUpdate = true;
-        }
+      if (registration.active) {
+        isUpdate = true;
+      }
 
-        registration.onupdatefound = function (updateEvent) {
-          console.log('A new Service Worker version has been found...');
+      registration.onupdatefound = function(updateEvent) {
+        console.log('A new Service Worker version has been found...');
 
-          // If an update is found the spec says that there is a new Service
-          // Worker installing, so we should wait for that to complete then
-          // show a notification to the user.
-          registration.installing.onstatechange = function (event) {
-
-            if (this.state === 'installed') {
-              if (isUpdate) {
-                ToasterSingleton.getToaster().toast('App updated. Restart for the new version.');
-              } else {
-                ToasterSingleton.getToaster().toast('App ready for offline use.');
-              }
+        // If an update is found the spec says that there is a new Service
+        // Worker installing, s o we should wait for that to complete then
+        // show a notification to the user.
+        registration.installing.onstatechange = function(event) {
+          if (this.state === 'installed') {
+            if (isUpdate) {
+              ToasterSingleton.getToaster()
+              .toast('App updated. Restart for the new version.');
+            } else {
+              ToasterSingleton.getToaster().toast('App ready for offline use.');
             }
-          };
+          }
         };
-      })
-      .catch((err) => {
-        console.log('Unable to register service worker.', err);
-      });
-      
+      };
+    })
+    .catch((err) => {
+      console.log('Unable to register service worker.', err);
+    });
   }
 
   /**
    * Load a script from URL and append it to the documents head.
    * @param {String} url The url of the script to load.
-   * @return {Promise} Promise Promise that resolves `onload` or rejects `onerror`.
+   * @return {Promise} Promise Resolves `onload` or rejects `onerror`.
    */
   loadScript(url) {
     return new Promise((resolve, reject) => {
@@ -84,14 +83,14 @@ export default class Controller {
   /**
    * Load a stylesheet from URL and append it to the documents head.
    * @param {String} url The url of the stylesheet to load.
-   * @return {Promise} Promise Promise that resolves `onload` or rejects `onerror`.
+   * @return {Promise} Promise Resolves `onload` or rejects `onerror`.
    */
   loadCSS(url) {
     return new Promise((resolve, reject) => {
       var xhr = new XMLHttpRequest();
       xhr.open('GET', url);
       xhr.responseType = 'text';
-      xhr.onload = function (e) {
+      xhr.onload = function(e) {
         if (this.status === 200) {
           var style = document.createElement('style');
           style.textContent = xhr.response;
