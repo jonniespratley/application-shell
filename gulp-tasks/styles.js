@@ -25,6 +25,16 @@ var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var license = require('gulp-license');
 
+var importOnce = require('node-sass-import-once');
+var sassOptions = {
+  importer: importOnce,
+  importOnce: {
+    index: true,
+    bower: true
+  }
+};
+
+
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
   'ie_mob >= 10',
@@ -53,7 +63,7 @@ gulp.task('styles:sass', function() {
   return gulp.src(GLOBAL.config.src + '/**/*.scss')
     // Only create sourcemaps for dev
     .pipe(gulpif(GLOBAL.config.env !== 'prod', sourcemaps.init()))
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass(sassOptions).on('error', sass.logError))
     .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
     .pipe(gulpif(GLOBAL.config.env === 'prod', minifyCSS()))
     .pipe(license(GLOBAL.config.license, GLOBAL.config.licenseOptions))

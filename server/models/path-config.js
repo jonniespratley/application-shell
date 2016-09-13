@@ -32,6 +32,13 @@ var pathConfigs = {
     remoteStyles: sharedStyles,
     remoteScripts: ['/scripts/static-page.js']
   },
+  '/micro-app-1': {
+    view: 'micro-app-1',
+    title: 'Micro App 1',
+    inlineStyles: getFileContents(['/styles/core.css']),
+    remoteStyles: sharedStyles,
+    remoteScripts: ['/scripts/static-page.js']
+  },
   '/app-shell': {
     view: '',
     title: 'App Shell',
@@ -41,15 +48,22 @@ var pathConfigs = {
   }
 };
 
+/**
+ * Read file return file contents.
+ */
 function getFileContents(files) {
   // Concat inline styles for document <head>
   var flattenedContents = '';
   var pathPrefix = '/../../dist/';
+  var filename = null;
   files.forEach(function (file) {
-    flattenedContents += fs.readFileSync(path.resolve(__dirname) +
-      pathPrefix + file);
+    filename = path.resolve(__dirname) + pathPrefix + file;
+    try {
+      flattenedContents += fs.readFileSync(filename);
+    } catch (e) {
+      console.log('ERROR', 'could not read', filename);
+    }
   });
-
   return flattenedContents;
 }
 

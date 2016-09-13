@@ -2,43 +2,62 @@ var path = require('path');
 var express = require('express');
 var exphbs = require('express-handlebars');
 
+
+
 function ServerController() {
   var expressApp = express();
   var handleBarsInstance = exphbs.create({
     defaultLayout: 'default',
     layoutsDir: path.join(__dirname, '/../views/layouts'),
-    partialsDir: path.join(__dirname, '/../views/partials')
+    partialsDir: path.join(__dirname, '/../views/partials'),
+    helpers: {
+      foo: function () { return 'FOO!'; },
+      bar: function () { return 'BAR!'; },
+      debug: function (optionalValue) {
+        console.log("Current Context");
+        console.log("====================");
+        console.log(this);
+
+        if (optionalValue) {
+          console.log("Value");
+          console.log("====================");
+          console.log(optionalValue);
+        }
+      }
+    }
   });
+
 
   // Set up the use of handle bars and set the path for views and layouts
   expressApp.set('views', path.join(__dirname, '/../views'));
   expressApp.engine('handlebars', handleBarsInstance.engine);
   expressApp.set('view engine', 'handlebars');
+  //expressApp.enable('view cache');
 
   // Define static assets path - i.e. styles, scripts etc.
-  expressApp.use('/', express.static(path.join(__dirname + '/../../dist/')));
-  expressApp.use('/bower_components', express.static(path.join(__dirname + '/../../bower_components/')));
+  expressApp.use('/', express.static( path.resolve(__dirname, '../../dist/')));
+  expressApp.use('/bower_components', express.static(path.resolve(__dirname, '../../bower_components/')));
 
   var expressServer = null;
 
-  this.getExpressApp = function() {
+  this.getExpressApp = function () {
     return expressApp;
   };
 
-  this.setExpressServer = function(server) {
+  this.setExpressServer = function (server) {
     expressServer = server;
   };
 
-  this.getExpressServer = function() {
+  this.getExpressServer = function () {
     return expressServer;
   };
 
-  this.getHandleBarsInstance = function() {
+  this.getHandleBarsInstance = function () {
     return handleBarsInstance;
   };
 }
 
-ServerController.prototype.startServer = function(port) {
+ServerController.prototype.startServer = function (port) {
   // As a failsafe use port 0 if the input isn't defined
   // this will result in a random port being assigned
   // See : https://nodejs.org/api/http.html for details
@@ -57,10 +76,10 @@ ServerController.prototype.startServer = function(port) {
   this.setExpressServer(server);
 };
 
-ServerController.prototype.addEndpoint = function(endpoint, controller) {
+ServerController.prototype.addEndpoint = function (endpoint, controller) {
   console.log('addEndpoint', endpoint);
   // Add the endpoint and call the onRequest method when a request is made
-  this.getExpressApp().get(endpoint, function(req, res) {
+  this.getExpressApp().get(endpoint, function (req, res) {
     controller.onRequest(req, res);
   });
 };

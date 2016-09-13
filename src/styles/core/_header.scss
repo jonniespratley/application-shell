@@ -68,7 +68,7 @@
   flex: 1;
 }
 
-@media(min-width: 600px) {
+@media(min-width: 1600px) {
   .header {
     padding: 16px 32px 0 24px;
     height: 144px;
@@ -96,6 +96,6 @@
 @media(min-width: 960px) {
   .header__title {
     width: 888px;
-    margin: 0 auto;
+    //margin: 0 auto;
   }
 }

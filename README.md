@@ -49,9 +49,17 @@ $ nodemon server/app.js
 
 Alternatively, you can just run `npm run monitor`. The application shell should now be available on port `8080`.
 
+
 ### Deployment
 
-We've deployed the project to Node.js on [Google Cloud](https://cloud.google.com/nodejs/). To do the same, follow the steps in their Node.js deployment [getting started](https://cloud.google.com/nodejs/getting-started/hello-world) guide and after running `npm install` run `gcloud preview app deploy app.yaml --promote`. If everything works correctly, you should have the project deployed to your custom AppSpot endpoint.
+This application is setup to be deployed to Cloud Foundry.
+
+```
+$ cf push
+```
+
+
+---
 
 ## Notes
 
@@ -97,19 +105,3 @@ There are no hard and fast rules with this architecture, but there are a few got
 
     Essentially the `noscript` use is a small (and trivial) attempt at treating
     JavaScript as a progressive enhancement.
-
-## License
-
-Copyright 2015 Google, Inc.
-
-Licensed to the Apache Software Foundation (ASF) under one or more contributor license agreements. See the NOTICE file distributed with this work for additional information regarding copyright ownership. The ASF licenses this file to you under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
-
-Please note: this is not a Google product
-
-## Acknowledgements
-
-With thanks to Paul Lewis for his inspiration in the [Voice Memos](https://voice-memos.appspot.com/) app and [Yannick Lung](https://www.iconfinder.com/icons/315148/app_document_file_icon#size=512) for the App icon used.
