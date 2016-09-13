@@ -11,6 +11,7 @@
     "monitor": "gulp dev",
     "postinstall": "gulp",
     "watch": "nodemon server/app.js",
+    "docs": "./node_modules/.bin/esdoc -c esdoc.json  && open ./esdoc/index.html",
     "deploy": "cf push"
   },
   "main": "app.js",
@@ -47,6 +48,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "devDependencies": {
+    "esdoc": "^0.4.8",
     "polybuild": "^1.1.0"
   }
 }

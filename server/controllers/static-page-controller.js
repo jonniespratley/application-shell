@@ -8,7 +8,7 @@ function StaticPageController() {
 
 // This method looks at the request path and renders the appropriate handlebars
 // template
-StaticPageController.prototype.onRequest = function(req, res) {
+StaticPageController.prototype.onRequest = function (req, res) {
   var pathConfig = pathConfigs.getConfig(req.path);
   if (!pathConfig) {
     res.status(404).send();

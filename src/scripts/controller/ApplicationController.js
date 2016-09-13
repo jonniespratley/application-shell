@@ -24,7 +24,7 @@ export default class ApplicationController extends Controller {
 
   constructor() {
     super();
-
+    console.log('ApplicationController.constructor');
     var navDrawer = new NavDrawerView();
 
     var sideNavToggleButton = document.querySelector('.js-toggle-menu');
@@ -41,6 +41,7 @@ export default class ApplicationController extends Controller {
       }
 
       anchorElements[i].addEventListener('click', (clickEvent) => {
+        console.log('anchorElements.click', clickEvent);
         clickEvent.preventDefault();
 
         navDrawer.close();

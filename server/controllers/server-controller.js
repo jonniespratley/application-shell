@@ -16,8 +16,8 @@ function ServerController() {
   expressApp.set('view engine', 'handlebars');
 
   // Define static assets path - i.e. styles, scripts etc.
-  expressApp.use('/',
-    express.static(path.join(__dirname + '/../../dist/')));
+  expressApp.use('/', express.static(path.join(__dirname + '/../../dist/')));
+  expressApp.use('/bower_components', express.static(path.join(__dirname + '/../../bower_components/')));
 
   var expressServer = null;
 
@@ -58,6 +58,7 @@ ServerController.prototype.startServer = function(port) {
 };
 
 ServerController.prototype.addEndpoint = function(endpoint, controller) {
+  console.log('addEndpoint', endpoint);
   // Add the endpoint and call the onRequest method when a request is made
   this.getExpressApp().get(endpoint, function(req, res) {
     controller.onRequest(req, res);

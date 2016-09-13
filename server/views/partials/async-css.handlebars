@@ -10,16 +10,14 @@
   // For older browser support see this for a simple shim
   // http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
   window.requestAnimationFrame(function() {
-    var elementToInsertLinkBefore =
-      document.getElementsByTagName('script')[0];
+    var elementToInsertLinkBefore = document.getElementsByTagName('script')[0];
     for (var i = 0; i < remoteStyles.length; i++) {
       var linkElement = document.createElement('link');
       linkElement.rel = 'stylesheet';
       linkElement.media = 'all';
       linkElement.href = remoteStyles[i];
 
-      elementToInsertLinkBefore.parentNode.insertBefore(linkElement,
-        elementToInsertLinkBefore);
+      elementToInsertLinkBefore.parentNode.insertBefore(linkElement, elementToInsertLinkBefore);
     }
   });
 </script>

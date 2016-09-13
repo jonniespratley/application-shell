@@ -80,8 +80,7 @@ export default class PageController {
     this.mainContainer.appendChild(headingElement);
 
     var paragraphElement = document.createElement('p');
-    paragraphElement.textContent = 'Oops - looks like this ' +
-      'page isn\'t valid.';
+    paragraphElement.textContent = 'Oops - looks like this ' + 'page is not valid.';
     this.mainContainer.appendChild(paragraphElement);
   }
 

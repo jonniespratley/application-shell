@@ -1,18 +1,16 @@
 'use strict';
 
 var path = require('path');
-
 var pathConfigs = require('../models/path-config.js');
 
 function APIController(handlebarsInstance) {
   this.handlebarsInstance = handlebarsInstance;
 }
 
-// This method looks at the request path and renders the appropriate handlebars
-// template
-APIController.prototype.onRequest = function(req, res) {
+// This method looks at the request path and renders the appropriate handlebars template
+APIController.prototype.onRequest = function (req, res) {
   var urlSections = req.path.split('/');
-  urlSections = urlSections.filter(function(sectionString) {
+  urlSections = urlSections.filter(function (sectionString) {
     return sectionString.length > 0;
   });
 
@@ -35,8 +33,9 @@ APIController.prototype.onRequest = function(req, res) {
     pathConfig.data.view + '.handlebars'
   );
 
-  this.handlebarsInstance.render(viewPath, pathConfig)
-    .then(function(renderedTemplate) {
+  console.log('onRequest', req.url, viewPath, urlPath);
+
+  this.handlebarsInstance.render(viewPath, pathConfig).then(function (renderedTemplate) {
       res.json({
         title: pathConfig.data.title,
         partialinlinestyles: pathConfig.data.inlineStyles,
@@ -45,7 +44,7 @@ APIController.prototype.onRequest = function(req, res) {
         partialhtml: renderedTemplate
       });
     })
-    .catch(function(err) {
+    .catch(function (err) {
       res.status(500).send();
     });
 };
