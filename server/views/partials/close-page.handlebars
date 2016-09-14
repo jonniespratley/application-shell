@@ -9,5 +9,8 @@
 {{#each data.remoteScripts}}
   <script src="{{this}}" async></script>
 {{~/each}}
+{{#each data.remoteImports}}
+  <link rel="import" href="{{this}}" async/>
+{{~/each}}
 </body>
 </html>

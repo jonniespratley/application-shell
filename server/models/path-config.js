@@ -23,7 +23,8 @@ var pathConfigs = {
     title: 'URL 1',
     inlineStyles: getFileContents(['/styles/core.css']),
     remoteStyles: sharedStyles,
-    remoteScripts: ['/scripts/static-page.js']
+    remoteScripts: ['/scripts/static-page.js'],
+    remoteImports: ['/bower_components/px-table-view/px-table-view.html']
   },
   '/url-2': {
     view: 'url-2',

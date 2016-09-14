@@ -9,5 +9,5 @@ applications:
     services:
       - my_uaa_instance
     env:
-      NODE_ENV: 'development'
-      DEBUG: '*'
+      #NODE_ENV: 'development'
+      DEBUG: 'app-shell:*'
