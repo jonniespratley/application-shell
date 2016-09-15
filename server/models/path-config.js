@@ -24,7 +24,15 @@ var pathConfigs = {
     inlineStyles: getFileContents(['/styles/core.css']),
     remoteStyles: sharedStyles,
     remoteScripts: ['/scripts/static-page.js'],
-    remoteImports: []
+    remoteImports: [
+      '/bower_components/polymer/polymer.html',
+      //'/bower_components/px-theme/px-theme.html',
+      // /'/bower_components/px-theme/px-app.html',
+      '/bower_components/px-card/px-card.html',
+      '/bower_components/px-partials/px-partials.html',
+      '/bower_components/px-layout/px-layout.html',
+      '/bower_components/px-table-view/px-table-view.html'
+    ]
   },
   '/url-2': {
     view: 'url-2',

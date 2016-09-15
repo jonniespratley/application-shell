@@ -1,5 +1,4 @@
 <link rel="import" href="bower_components/px-layout/px-layout.html">
-
 <dom-module id="x-app">
     <style include="px-layout-css">
          :host {
@@ -31,35 +30,29 @@
             </p>
           </div>
         </div>
-
       </section>
     </px-drawer-layout>
   </template>
-    <script>
-        Polymer({
-            is: 'x-app',
-            created: function() {
-                console.warn(this.tagName, 'created');
-            },
-            attached: function() {
-                console.warn(this.tagName, 'attached');
-            }
-
-        });
-    </script>
 </dom-module>
-
-
 <template id="micro-app-1" is="dom-bind">
   <x-app id="xapp"></x-app>
 </template>
 <script type="text/javascript">
-    document.addEventListener('WebComponentsReady', function(e) {
-        console.log('WebComponentsReady');
-        var app = document.querySelector('#micro-app-1');
-        app.set('title', 'Micro App 1');
-        app.addEventListener('dom-change', function() {
-            console.warn('auto-binding template is ready.');
-        });
+  document.addEventListener('WebComponentsReady', function(e) {
+    Polymer({
+        is: 'x-app',
+        created: function() {
+            console.warn(this.tagName, 'created');
+        },
+        attached: function() {
+            console.warn(this.tagName, 'attached');
+        }
     });
+      console.log('WebComponentsReady');
+      var app = document.querySelector('#micro-app-1');
+      app.set('title', 'Micro App 1');
+      app.addEventListener('dom-change', function() {
+          console.warn('auto-binding template is ready.');
+      });
+  });
 </script>
