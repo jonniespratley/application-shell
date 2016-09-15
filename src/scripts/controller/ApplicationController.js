@@ -22,7 +22,7 @@ import NavDrawerView from './../view/NavDrawerView';
 
 export default class ApplicationController extends Controller {
 
-  constructor() {
+  constructor () {
     super();
     console.log('ApplicationController.constructor');
     var navDrawer = new NavDrawerView();

@@ -3,7 +3,7 @@ import NavDrawerView from './../view/NavDrawerView';
 
 export default class StaticPageController extends Controller {
 
-  constructor() {
+  constructor () {
     super();
 
     var navDrawer = new NavDrawerView();

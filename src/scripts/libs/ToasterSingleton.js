@@ -15,7 +15,7 @@
  */
 
 export default class ToasterSingleton {
-  static getToaster() {
+  static getToaster () {
     if (typeof window.ToasterInstance_ !== 'undefined') {
       return window.ToasterInstance_;
     }
@@ -28,12 +28,12 @@ export default class ToasterSingleton {
 
 class Toaster {
 
-  constructor() {
+  constructor () {
     this.view = document.querySelector('.js-toast-view');
     this.hideTimeout = 0;
   }
 
-  toast(message) {
+  toast (message) {
     this.view.textContent = message;
     this.view.classList.add('toast-view--visible');
 
@@ -43,7 +43,7 @@ class Toaster {
     }, 3000);
   }
 
-  hide() {
+  hide () {
     this.view.classList.remove('toast-view--visible');
   }
 }

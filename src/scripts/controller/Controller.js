@@ -10,7 +10,7 @@ export default class Controller {
    * @constructor
    * @param {boolean} registerServiceWorker Flag to register a serviceWorker.
    */
-  constructor(registerServiceWorker = true) {
+  constructor (registerServiceWorker = true) {
     if (registerServiceWorker) {
       this.registerServiceWorker();
     }
@@ -19,7 +19,7 @@ export default class Controller {
   /**
    * Register service worker
    */
-  registerServiceWorker() {
+  registerServiceWorker () {
     if (!('serviceWorker' in navigator)) {
       // Service worker is not supported on this platform
       console.warn('Service worker is not supported on this platform');
@@ -67,7 +67,7 @@ export default class Controller {
    * @param {String} url The url of the script to load.
    * @return {Promise} Promise Resolves `onload` or rejects `onerror`.
    */
-  loadScript(url) {
+  loadScript (url) {
     return new Promise((resolve, reject) => {
       var script = document.createElement('script');
       script.async = true;
@@ -85,7 +85,7 @@ export default class Controller {
    * @param {String} url The url of the stylesheet to load.
    * @return {Promise} Promise Resolves `onload` or rejects `onerror`.
    */
-  loadCSS(url) {
+  loadCSS (url) {
     return new Promise((resolve, reject) => {
       var xhr = new XMLHttpRequest();
       xhr.open('GET', url);

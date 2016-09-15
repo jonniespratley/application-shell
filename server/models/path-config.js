@@ -39,7 +39,11 @@ var pathConfigs = {
     inlineStyles: getFileContents(['/styles/core.css']),
     remoteStyles: sharedStyles,
     remoteScripts: ['/scripts/static-page.js'],
-    remoteImports: ['/bower_components/px-table-view/px-table-view.html']
+    remoteImports: [
+      '/bower_components/polymer/polymer.html',
+      '/bower_components/px-layout/px-layout.html',
+      '/bower_components/px-table-view/px-table-view.html'
+    ]
   },
   '/app-shell': {
     view: '',

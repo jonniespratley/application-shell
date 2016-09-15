@@ -69,11 +69,17 @@ function ServerController() {
   expressApp.use(bodyParser.urlencoded({
     extended: true
   }));
+
+
   expressApp.use(bodyParser.json());
   expressApp.use(methodOverride());
   expressApp.use(logErrors);
   expressApp.use(clientErrorHandler);
   expressApp.use(errorHandler);
+  expressApp.use((req, res, next) =>{
+    console.log('application-shell', req.url, req.method, req.data);
+    next();
+  });
 
 
   var expressServer = null;

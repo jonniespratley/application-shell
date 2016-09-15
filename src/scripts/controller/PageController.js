@@ -1,21 +1,21 @@
 export default class PageController {
-  constructor() {
+  constructor () {
     this.loader = document.querySelector('.js-global-loader');
     this.mainContainer = document.querySelector('.js-global-main');
 
     this.DEFAULT_TITLE = 'App Shell';
   }
 
-  onUpdate() {
+  onUpdate () {
     console.log('onUpdate: ', this.path);
   }
 
-  showLoading() {
+  showLoading () {
     // Show loading dialog while we get content
     this.loader.classList.remove('is-hidden');
   }
 
-  onStart(path) {
+  onStart (path) {
     console.log('onStart: ', path);
     this.updateNavDrawer(path);
 
@@ -59,7 +59,7 @@ export default class PageController {
       });
   }
 
-  onFinish() {
+  onFinish () {
     console.log('onFinish');
     // Remove any existing styles
     var insertedStyles =
@@ -74,7 +74,7 @@ export default class PageController {
     }
   }
 
-  show404() {
+  show404 () {
     var headingElement = document.createElement('h1');
     headingElement.textContent = '404.';
     this.mainContainer.appendChild(headingElement);
@@ -85,7 +85,7 @@ export default class PageController {
     this.mainContainer.appendChild(paragraphElement);
   }
 
-  showError(msg) {
+  showError (msg) {
     var headingElement = document.createElement('h1');
     headingElement.textContent = 'Ooopps.';
     this.mainContainer.appendChild(headingElement);
@@ -96,7 +96,7 @@ export default class PageController {
     this.mainContainer.appendChild(paragraphElement);
   }
 
-  updateNavDrawer(path) {
+  updateNavDrawer (path) {
     var nodeList = document.querySelectorAll('.side-nav__body a');
     [].forEach.call(nodeList, function(el) {
       // Reset active states

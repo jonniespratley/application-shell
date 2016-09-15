@@ -17,7 +17,7 @@
 
 export default class RouterSingleton {
 
-  static getRouter() {
+  static getRouter () {
     if (typeof window.RouterInstance_ !== 'undefined') {
       return window.RouterInstance_;
     }
@@ -36,7 +36,7 @@ class Router {
   /**
    * @constructor
    */
-  constructor() {
+  constructor () {
     this.routes = {};
     this.currentPath = null;
     this.defaultActivity = null;
@@ -51,7 +51,7 @@ class Router {
    * @param {String} path The path to add
    * @param {Object} activity The activity to use when route matches
    */
-  addRoute(path, activity) {
+  addRoute (path, activity) {
     if (this.routes[path]) {
       throw 'A handler already exists for this path: ' + path;
     }
@@ -59,7 +59,7 @@ class Router {
     this.routes[path] = activity;
   }
 
-  setDefaultRoute(activity) {
+  setDefaultRoute (activity) {
     if (this.defaultActivity) {
       throw 'A default handler already exists';
     }
@@ -67,7 +67,7 @@ class Router {
     this.defaultActivity = activity;
   }
 
-  removeRoute(path) {
+  removeRoute (path) {
     if (!this.routes[path]) {
       return;
     }
@@ -75,13 +75,13 @@ class Router {
     delete this.routes[path];
   }
 
-  requestStateUpdate() {
+  requestStateUpdate () {
     requestAnimationFrame(() => {
       this.manageState();
     });
   }
 
-  manageState() {
+  manageState () {
     var newPath = document.location.pathname;
     var newActivity = this.routes[newPath];
     var currentActivity = this.routes[this.currentPath];
@@ -116,7 +116,7 @@ class Router {
     return true;
   }
 
-  goToPath(path, title = null) {
+  goToPath (path, title = null) {
     console.log('goToPath() path = ' + path);
     // Only process real changes.
     if (path === window.location.pathname) {
@@ -129,7 +129,7 @@ class Router {
     });
   }
 
-  onPopState(e) {
+  onPopState (e) {
     e.preventDefault();
     this.requestStateUpdate();
   }

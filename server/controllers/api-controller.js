@@ -27,11 +27,7 @@ APIController.prototype.onRequest = function (req, res) {
     return;
   }
 
-  var viewPath = path.join(
-    __dirname,
-    '/../views',
-    pathConfig.data.view + '.handlebars'
-  );
+  var viewPath = path.join(__dirname,'/../views',pathConfig.data.view + '.handlebars');
 
   console.log('onRequest', req.url, viewPath, urlPath);
 

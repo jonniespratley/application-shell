@@ -1,6 +1,6 @@
 export default class NavDrawerView {
 
-  constructor() {
+  constructor () {
     this.rootElement = document.querySelector('.js-side-nav');
     this.sideNavContent = this.rootElement
       .querySelector('.js-side-nav-content');
@@ -11,6 +11,7 @@ export default class NavDrawerView {
     });
 
     this.sideNavContent.addEventListener('click', (e) => {
+      console.log('click', e);
       e.stopPropagation();
     });
 
@@ -26,11 +27,13 @@ export default class NavDrawerView {
       var sideNavTransform;
 
       var onSideNavTouchStart = (e) => {
+        console.log('onSideNavTouchStart', e);
         e.preventDefault();
         touchStartX = e.touches[0].pageX;
       };
 
       var onSideNavTouchMove = (e) => {
+        console.log('onSideNavTouchMove', e);
         e.preventDefault();
 
         var newTouchX = e.touches[0].pageX;
@@ -55,11 +58,11 @@ export default class NavDrawerView {
     }
   }
 
-  isOpen() {
+  isOpen () {
     return this.rootElement.classList.contains('side-nav--visible');
   }
 
-  toggle() {
+  toggle () {
     if (this.isOpen()) {
       this.close();
     } else {
@@ -67,7 +70,7 @@ export default class NavDrawerView {
     }
   }
 
-  close() {
+  close () {
     this.rootElement.classList.remove('side-nav--visible');
     this.sideNavContent.classList.add('side-nav__content--animatable');
 
@@ -78,7 +81,7 @@ export default class NavDrawerView {
     }
   }
 
-  open() {
+  open () {
     this.rootElement.classList.add('side-nav--visible');
 
     if (this.hasUnprefixedTransform) {

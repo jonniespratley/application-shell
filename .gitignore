@@ -6,3 +6,4 @@ tests
 npm-debug.log
 bower_components
 esdoc
+.project

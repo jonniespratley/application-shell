@@ -1,5 +1,5 @@
-<link rel="import" href="/bower_components/px-drawer/px-drawer.html">
-<link rel="import" href="/bower_components/px-layout/px-layout.html">
+<link rel="import" href="bower_components/px-layout/px-layout.html">
+
 <dom-module id="x-app">
     <style include="px-layout-css">
          :host {
@@ -14,20 +14,22 @@
         </div>
       </px-drawer>
       <section content>
-        <px-header title="Seed Application" subtitle="Powered by Predix" username="John Sinclair"></px-header>
-        <px-title-bar title="Widget Title">
-            <px-button modifier="tertiary">Action 1</px-button>
-            <px-button modifier="tertiary">Action 2</px-button>
-        </px-title-bar>
-        <div class="card">
-          <h1>{&#123;title}}</h1>
-          {{debug}}
-          <p>
-            This content is wrapped in a <code>template</code> element.
-          </p>
-          <p>
-            Since this is a handlebars template and <code>{{ test}}</code> is needed. I used <code>&#123;</code>
-          </p>
+        <px-header title="Micro App" subtitle="application-shell" username="John Sinclair"></px-header>
+        <div class="u-p">
+          <px-title-bar title="Section Title">
+              <px-button modifier="tertiary">Action 1</px-button>
+              <px-button modifier="tertiary">Action 2</px-button>
+          </px-title-bar>
+          <div class="card">
+            <h1>{&#123;title}}</h1>
+            {{debug}}
+            <p>
+              This content is wrapped in a <code>template</code> element.
+            </p>
+            <p>
+              Since this is a handlebars template and <code>{{ test}}</code> is needed. I used <code>&#123;</code>
+            </p>
+          </div>
         </div>
 
       </section>
