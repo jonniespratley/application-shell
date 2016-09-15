@@ -91,12 +91,12 @@
   font-size: 14px;
   outline: none;
   height: 48px;
-  padding-left: 70px;
+  padding-left: 20px;
   width: 100%;
   text-align: left;
   display: block;
   border: none;
-  background: url(/images/ic_delete_24px.svg) 16px 12px no-repeat;
+  //background: url(/images/ic_delete_24px.svg) 16px 12px no-repeat;
   color: rgba(0,0,0,0.87);
   cursor: pointer;
   &:hover{
@@ -105,11 +105,11 @@
 }
 
 .side-nav__delete-all {
-  background-image: url(/images/ic_restore_24px.svg);
+  //background-image: url(/images/ic_restore_24px.svg);
 }
 
 .side-nav__blog-post {
-  background-image: url(/images/ic_info_outline_24px.svg);
+  //background-image: url(/images/ic_info_outline_24px.svg);
   line-height: 48px;
   text-decoration: none;
 }
@@ -120,7 +120,7 @@
 }
 
 .side-nav__file-bug-report {
-  background-image: url(/images/ic_feedback_24px.svg);
+//  background-image: url(/images/ic_feedback_24px.svg);
   line-height: 48px;
   text-decoration: none;
 }

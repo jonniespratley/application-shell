@@ -24,7 +24,7 @@ var pathConfigs = {
     inlineStyles: getFileContents(['/styles/core.css']),
     remoteStyles: sharedStyles,
     remoteScripts: ['/scripts/static-page.js'],
-    remoteImports: ['/bower_components/px-table-view/px-table-view.html']
+    remoteImports: []
   },
   '/url-2': {
     view: 'url-2',
@@ -38,7 +38,8 @@ var pathConfigs = {
     title: 'Micro App 1',
     inlineStyles: getFileContents(['/styles/core.css']),
     remoteStyles: sharedStyles,
-    remoteScripts: ['/scripts/static-page.js']
+    remoteScripts: ['/scripts/static-page.js'],
+    remoteImports: ['/bower_components/px-table-view/px-table-view.html']
   },
   '/app-shell': {
     view: '',
@@ -51,14 +52,15 @@ var pathConfigs = {
 
 /**
  * Read file return file contents.
+ * Concat inline styles for document <head>
  */
-function getFileContents(files) {
-  // Concat inline styles for document <head>
+function getFileContents (files) {
   var flattenedContents = '';
-  var pathPrefix = '/../../dist/';
+  var pathPrefix = '/../../dist';
   var filename = null;
-  files.forEach(function (file) {
+  files.forEach(function(file) {
     filename = path.resolve(__dirname) + pathPrefix + file;
+    console.log('getFileContents', filename);
     try {
       flattenedContents += fs.readFileSync(filename);
     } catch (e) {
@@ -69,7 +71,7 @@ function getFileContents(files) {
 }
 
 module.exports = {
-  getConfig: function (urlPath) {
+  getConfig: function(urlPath) {
     var object = pathConfigs[urlPath];
 
     // Check if the path is actually valid.

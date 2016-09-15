@@ -8,12 +8,16 @@ const methodOverride = require('method-override');
 
 function errorHandler(err, req, res, next) {
   res.status(500);
-  res.render('error', { error: err });
+  res.render('error', {
+    error: err
+  });
 }
 
 function clientErrorHandler(err, req, res, next) {
   if (req.xhr) {
-    res.status(500).send({ error: 'Something failed!' });
+    res.status(500).send({
+      error: 'Something failed!'
+    });
   } else {
     next(err);
   }
@@ -32,8 +36,12 @@ function ServerController() {
     layoutsDir: path.join(__dirname, '/../views/layouts'),
     partialsDir: path.join(__dirname, '/../views/partials'),
     helpers: {
-      foo: function () { return 'FOO!'; },
-      bar: function () { return 'BAR!'; },
+      foo: function () {
+        return 'FOO!';
+      },
+      bar: function () {
+        return 'BAR!';
+      },
       debug: function (optionalValue) {
         console.log("Current Context");
         console.log("====================");
@@ -56,10 +64,10 @@ function ServerController() {
   //expressApp.enable('view cache');
 
   // Define static assets path - i.e. styles, scripts etc.
-  expressApp.use('/', express.static( path.resolve(__dirname, '../../dist/')));
+  expressApp.use('/', express.static(path.resolve(__dirname, '../../dist/')));
   expressApp.use('/bower_components', express.static(path.resolve(__dirname, '../../bower_components/')));
   expressApp.use(bodyParser.urlencoded({
-  	extended: true
+    extended: true
   }));
   expressApp.use(bodyParser.json());
   expressApp.use(methodOverride());

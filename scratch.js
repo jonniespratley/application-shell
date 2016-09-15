@@ -1,9 +1,16 @@
-var Vulcanize = require('vulcanize');
-var hydrolysis = require('hydrolysis');
+'use strict';
+const Vulcanize = require('vulcanize');
+const hydrolysis = require('hydrolysis');
 
-/* a Hydrolysis loader object (optional) */
-///var loader = new hydrolysis.loader(...)
 
+var target = 'src/elements.html';
+
+/* a Hydrolysis loader object (optional)
+var loader = new hydrolysis.loader(...)
+hydrolysis.Analyzer.analyze(target).then(function(analyzer) {
+  console.log(analyzer)
+});
+*/
 var vulcan = new Vulcanize({
   abspath: '',
   excludes: [
@@ -20,7 +27,7 @@ var vulcan = new Vulcanize({
     //loader: loader,
   inputUrl: ''
 });
-var target = 'src/elements.html'
+
 vulcan.process(target, function (err, inlinedHtml) {
-  console.log(err, inlinedHtml);
+  //console.log(err, inlinedHtml);
 });

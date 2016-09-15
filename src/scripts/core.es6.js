@@ -17,4 +17,4 @@
 
 import ApplicationController from './controller/ApplicationController';
 
-new ApplicationController();
+window.app = new ApplicationController();
