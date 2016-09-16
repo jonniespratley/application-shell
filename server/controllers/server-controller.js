@@ -152,7 +152,7 @@ function ServerController() {
  * Start the server and set the expressServer to the instance.
  * @param {Number} port The port to use
  */
-ServerController.prototype.startServer = function (port) {
+ServerController.prototype.startServer = function (port, push) {
   // As a failsafe use port 0 if the input isn't defined
   // this will result in a random port being assigned
   // See : https://nodejs.org/api/http.html for details
@@ -164,17 +164,21 @@ ServerController.prototype.startServer = function (port) {
     port = 0;
   }
 
-/*
-  var server = this.getExpressApp().listen(port, () => {
-    var serverPort = server.address().port;
-    log.info('Server running on port ' + serverPort);
-  });*/
 
-  var server = http2.createServer(options, this.getExpressApp())
-    .listen(port, ()=>{
+
+  if(push){
+    var server = http2.createServer(options, this.getExpressApp())
+      .listen(port, ()=>{
+        var serverPort = server.address().port;
+        log.info(`Server is listening on https://localhost:${serverPort}. You can open the URL in the browser.`)
+      });
+  } else {
+    var server = this.getExpressApp().listen(port, () => {
       var serverPort = server.address().port;
-      log.info(`Server is listening on https://localhost:${serverPort}. You can open the URL in the browser.`)
+      log.info('Server running on port ' + serverPort);
     });
+
+  }
 
 
   this.setExpressServer(server);
