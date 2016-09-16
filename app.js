@@ -12,8 +12,7 @@
  */
 
 var serverController = require('./server/controllers/server-controller');
-var StaticPageController = require(
-  './server/controllers/static-page-controller');
+var StaticPageController = require('./server/controllers/static-page-controller');
 
 var APIController = require('./server/controllers/api-controller');
 var AuthController = require('./server/controllers/auth-controller');

@@ -1,6 +1,11 @@
-var fs = require('fs');
-var path = require('path');
+'use strict';
 
+const fs = require('fs');
+const cssmin = require('cssmin');
+const path = require('path');
+const log = require('npmlog');
+
+log.heading = 'app-shell';
 var sharedStyles = [
   //'http://predixdev.github.io/px-layout/bower_components/px-layout/css/px-layout.css'
 ];
@@ -12,7 +17,7 @@ var pathConfigs = {
   '/': {
     view: 'index',
     title: 'Index',
-    inlineStyles: getFileContents(['/styles/core.css']),
+    inlineStyles: getFileContents(['/styles/core.css'], true),
     remoteStyles: sharedStyles,
     remoteScripts: [
       '/scripts/static-page.js'
@@ -21,7 +26,7 @@ var pathConfigs = {
   '/url-1': {
     view: 'url-1',
     title: 'URL 1',
-    inlineStyles: getFileContents(['/styles/core.css']),
+    inlineStyles: getFileContents(['/styles/core.css'], true),
     remoteStyles: sharedStyles,
     remoteScripts: ['/scripts/static-page.js'],
     remoteImports: [
@@ -37,14 +42,14 @@ var pathConfigs = {
   '/url-2': {
     view: 'url-2',
     title: 'URL 2',
-    inlineStyles: getFileContents(['/styles/core.css']),
+    inlineStyles: getFileContents(['/styles/core.css'], false),
     remoteStyles: sharedStyles,
     remoteScripts: ['/scripts/static-page.js']
   },
   '/micro-app-1': {
     view: 'micro-app-1',
     title: 'Micro App 1',
-    inlineStyles: getFileContents(['/styles/core.css']),
+    inlineStyles: getFileContents(['/styles/core.css'], false),
     remoteStyles: sharedStyles,
     remoteScripts: ['/scripts/static-page.js'],
     remoteImports: [
@@ -56,7 +61,7 @@ var pathConfigs = {
   '/app-shell': {
     view: '',
     title: 'App Shell',
-    inlineStyles: getFileContents(['/styles/core.css']),
+    inlineStyles: getFileContents(['/styles/core.css'], false),
     remoteStyles: sharedStyles,
     remoteScripts: ['/scripts/core.js']
   }
@@ -66,19 +71,22 @@ var pathConfigs = {
  * Read file return file contents.
  * Concat inline styles for document <head>
  */
-function getFileContents (files) {
+function getFileContents (files, minify) {
   var flattenedContents = '';
   var pathPrefix = '/../../dist';
   var filename = null;
   files.forEach(function(file) {
-    filename = path.resolve(__dirname) + pathPrefix + file;
-    console.log('getFileContents', filename);
+    filename = path.resolve(__dirname  + pathPrefix + file);
+    log.info('getFileContents', filename);
     try {
       flattenedContents += fs.readFileSync(filename);
     } catch (e) {
-      console.log('ERROR', 'could not read', filename);
+      log.error('ERROR', 'could not read', filename);
     }
   });
+  if(minify){
+    return cssmin(flattenedContents);
+  }
   return flattenedContents;
 }
 

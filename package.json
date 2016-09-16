@@ -9,6 +9,7 @@
   "scripts": {
     "start": "node app.js",
     "monitor": "gulp dev",
+    "test": "gulp test",
     "postinstall": "gulp",
     "watch": "nodemon server/app.js",
     "docs": "./node_modules/.bin/esdoc -c esdoc.json  && open ./esdoc/index.html",
@@ -20,6 +21,7 @@
     "babelify": "^7.2.0",
     "body-parser": "^1.15.2",
     "browserify": "^11.2.0",
+    "cssmin": "^0.4.3",
     "debug": "^2.2.0",
     "del": "^2.0.2",
     "esdoc": "^0.4.8",
@@ -43,20 +45,23 @@
     "gulp-replace": "^0.5.4",
     "gulp-sass": "^2.0.4",
     "gulp-sourcemaps": "^1.6.0",
+    "gulp-spawn-mocha": "^3.1.0",
     "gulp-streamify": "^1.0.2",
     "gulp-uglify": "^1.4.2",
     "gulp-util": "^3.0.6",
     "hydrolysis": "^1.24.1",
+    "istanbul": "^0.4.5",
     "method-override": "^2.3.6",
+    "mocha": "^3.0.2",
+    "morgan": "^1.7.0",
     "node-sass-import-once": "^1.2.0",
     "polybuild": "^1.1.0",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.1.4",
+    "spdy": "^3.4.0",
+    "supertest": "^2.0.0",
     "sw-precache": "^2.2.0",
     "vinyl-source-stream": "^1.1.0",
     "vulcanize": "^1.14.8"
-  },
-  "devDependencies": {
-    "gulp-spawn-mocha": "^3.1.0"
   }
 }
