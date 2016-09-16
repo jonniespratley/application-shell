@@ -6,3 +6,5 @@ before_script:
 - npm -v
 - npm i -g bower
 - bower install
+service_name: travis-pro
+repo_token: m4mCX2ELkqzmqjTmCnhxR31ARNNzrYE43
