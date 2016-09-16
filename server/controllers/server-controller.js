@@ -5,7 +5,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-
+const session = require('express-session')
 function errorHandler(err, req, res, next) {
   res.status(500);
   res.render('error', {
@@ -56,6 +56,18 @@ function ServerController() {
     }
   });
 
+  var sess = {
+    secret: 'app-shell',
+    resave: false,
+    saveUninitialized: true
+  }
+
+  if (expressApp.get('env') === 'production') {
+    expressApp.set('trust proxy', 1) // trust first proxy
+    sess.cookie.secure = true // serve secure cookies
+  }
+
+  expressApp.use(session(sess));
 
   // Set up the use of handle bars and set the path for views and layouts
   expressApp.set('views', path.join(__dirname, '/../views'));

@@ -1,34 +1,31 @@
 'use strict';
-var log = require('debug')('application-shell:StaticPageController');
-var pathConfigs = require('../models/path-config.js');
+const log = require('debug')('application-shell:StaticPageController');
+const pathConfigs = require('../models/path-config.js');
 
-function StaticPageController() {
-
+class StaticPageController {
+  constructor() {
+  }
+  // This method looks at the request path and renders the appropriate handlebars template
+  onRequest(req, res){
+    log(req.method, req.path);
+    var pathConfig = pathConfigs.getConfig(req.path);
+    if (!pathConfig) {
+      res.status(404).send();
+      return;
+    }
+    switch (req.path) {
+    case '/app-shell':
+      // Render with app-shell layout and include no initial content
+      pathConfig.layout = 'app-shell';
+      res.render('', pathConfig);
+      return;
+    default:
+      // Use default layout
+      res.render(pathConfig.data.view, pathConfig);
+      return;
+    }
+  }
 }
 
-// This method looks at the request path and renders the appropriate handlebars
-// template
-StaticPageController.prototype.onRequest = function (req, res) {
-  log(req.method, req.path);
-  var pathConfig = pathConfigs.getConfig(req.path);
-  if (!pathConfig) {
-    res.status(404).send();
-    return;
-  }
-
-
-  switch (req.path) {
-  case '/app-shell':
-    // Render with app-shell layout and include no initial content
-    pathConfig.layout = 'app-shell';
-    res.render('', pathConfig);
-    return;
-  default:
-    // Use default layout
-
-    res.render(pathConfig.data.view, pathConfig);
-    return;
-  }
-};
 
 module.exports = StaticPageController;
