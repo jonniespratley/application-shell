@@ -26,7 +26,6 @@ export default class ApplicationController extends Controller {
     super();
     console.log('ApplicationController.constructor');
     var navDrawer = new NavDrawerView();
-
     var sideNavToggleButton = document.querySelector('.js-toggle-menu');
     sideNavToggleButton.addEventListener('click', () => {
       navDrawer.toggle();
@@ -43,9 +42,7 @@ export default class ApplicationController extends Controller {
       anchorElements[i].addEventListener('click', (clickEvent) => {
         console.log('anchorElements.click', clickEvent);
         clickEvent.preventDefault();
-
         navDrawer.close();
-
         var router = RouterSingleton.getRouter();
         router.goToPath(clickEvent.target.href);
       });
@@ -55,6 +52,7 @@ export default class ApplicationController extends Controller {
     router.addRoute('/', new PageController());
     router.addRoute('/url-1', new PageController());
     router.addRoute('/url-2', new PageController());
+    router.addRoute('/micro-app-1', new PageController());
     router.setDefaultRoute(new PageController());
     router.requestStateUpdate();
   }

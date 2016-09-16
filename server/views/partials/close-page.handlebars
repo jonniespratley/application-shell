@@ -2,6 +2,12 @@
 {{>side-nav}}
 
 <aside class="toast-view js-toast-view"></aside>
+<!-- Loading Dialog For use by Activities -->
+<div class="loader js-global-loader is-hidden">
+  <svg viewBox="0 0 32 32" width="32" height="32">
+    <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+  </svg>
+</div>
 
 {{> async-css }}
 
@@ -10,7 +16,7 @@
   <script src="{{this}}" async></script>
 {{~/each}}
 {{#each data.remoteImports}}
-  <link rel="import" href="{{this}}" async/>
+  <link rel="import" href="{{this}}" />
 {{~/each}}
 </body>
 </html>

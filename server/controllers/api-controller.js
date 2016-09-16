@@ -3,8 +3,6 @@
 const path = require('path');
 const pathConfigs = require('../models/path-config.js');
 
-
-
 class APIController{
   constructor(handlebarsInstance) {
     this.handlebarsInstance = handlebarsInstance;
@@ -33,18 +31,19 @@ class APIController{
       return;
     }
 
-    var viewPath = path.join(__dirname,'/../views',pathConfig.data.view + '.handlebars');
-
-    console.log('onRequest', req.url, viewPath, urlPath);
+    var viewPath = path.join(__dirname,'/../views', pathConfig.data.view + '.handlebars');
 
     this.handlebarsInstance.render(viewPath, pathConfig).then(function (renderedTemplate) {
+
         res.json({
           title: pathConfig.data.title,
           partialinlinestyles: pathConfig.data.inlineStyles,
           partialremotestyles: pathConfig.data.remoteStyles,
           partialscripts: pathConfig.data.remoteScripts,
+          partialimports: pathConfig.data.remoteImports,
           partialhtml: renderedTemplate
         });
+
       })
       .catch(function (err) {
         res.status(500).send();

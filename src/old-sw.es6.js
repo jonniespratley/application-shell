@@ -36,9 +36,11 @@ self.oninstall = function(event) {
     '/favicon.ico',
     '/manifest.json',
 
+    //URLS
     '/api/',
     '/api/url-1',
     '/api/url-2',
+    '/api/micro-app-1',
     '/api/index'
   ];
 

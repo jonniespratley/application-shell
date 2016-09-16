@@ -108,7 +108,7 @@ function ServerController() {
   expressApp.use(clientErrorHandler);
   expressApp.use(errorHandler);
   expressApp.use((req, res, next) =>{
-    console.log('application-shell', req.url, req.method, req.data);
+  log.info( req.method, req.url, req.data);
     next();
   });
 

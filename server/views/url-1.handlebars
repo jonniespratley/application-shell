@@ -1,10 +1,8 @@
 <dom-module id="x-app">
+
+
+    <template strip-whitespace>
     <style include="px-layout-css">
-         :host {
-            display: block;
-        }
-    </style>
-    <style>
         .predixio {
             background: #eaeaea;
             margin: 0;
@@ -86,73 +84,120 @@
             text-transform: uppercase;
         }
     </style>
-    <template>
-    <px-drawer-layout>
-      <px-header-layout class="predixio" full-width>
-          <px-header class="u-p" title="Developer Network" bare>
-            <div brand>
-              <px-brand predix-wordmark height="20" width="100"></px-brand>
-            </div>
-            <div class="flex flex--middle flex--right" right>
-              <nav class="flex flex--middle hidden-sm-down">
-                <a href="#Catalog" class="active">Catalog</a>
-                <a href="#Resources">Resources</a>
-                <a href="#Community">Community</a>
-                <a href="#Support">Support</a>
-                <span class="spacer flex flex--center flex--middle">|</span>
-                <a href="#Sign in">Sign in</a>
-              </nav>
-              <button class=" btn--transparent" drawer-toggle>
-                <px-icon icon="fa:fa-bars"></px-icon>
-              </button>
-            </div>
-          </px-header>
 
-          <px-drawer id="sidedrawer" fixed overlay align="right">
-            <div class="flex flex--center flex--middle u-p-">
-              <px-brand size="48" predix></px-brand>
-            </div>
-            <aside class="u-p">
-              Side navigation
-            </aside>
-          </px-drawer>
+    <app-route id="router" pattern="/:view" route="{&#123;route}}" data="{&#123;routeData}}"></app-route>
+<!--
+      <div class="flex flex--spaced u-p-">
+        <span>Pattern: <input is="iron-input" type="text" bind-value="{&#123;pattern}}"></span>
+        <span>Path: <input is="iron-input" type="text" bind-value="{&#123;route.path}}"></span>
+      </div>
+    -->
+    <px-header-layout id="layout" class="predixio" full-width>
+        <px-header class="u-p" title="Developer Network" bare>
+          <div brand>
+            <px-brand predix-wordmark height="20" width="100"></px-brand>
+          </div>
+          <div class="flex flex--middle flex--right" right>
+            <nav class="flex flex--middle hidden-sm-down">
+              <a href="#/catalog" class="active">Catalog</a>
+              <a href="#/resources">Resources</a>
+              <a href="#/community">Community</a>
 
-          <section class="u-ph tiles flex flex--wrap">
-            <px-card header-text="Blobstore" class="tile">
-              <p class="u-m0 u-p0">Use this binary large object storage (BLOB) to securely store large byte arrays.</p>
-              <div class="u-pt">
-                <img src="https://www.predix.com/sites/default/files/catalog_4p_new_logo.png" alt="Predix Logo" height="30" />
-              </div>
-            </px-card>
-            <px-card header-text="Asset Data" class="tile">
-              <p class="u-m0 u-p0">Create and store machine asset mdoels and instances.</p>
-              <div class="u-pt">
-                <img src="https://www.predix.com/sites/default/files/catalog_4p_new_logo.png" alt="Predix Logo" height="30" />
-              </div>
-            </px-card>
-            <px-card header-text="Time Series" class="tile">
-              <p class="u-m0 u-p0">Quickly and efficiently manage, ingest, store, and analyze data.</p>
-              <div class="u-pt">
-                <img src="https://www.predix.com/sites/default/files/catalog_4p_new_logo.png" alt="Predix Logo" height="30" />
-              </div>
-            </px-card>
+              <span class="spacer flex flex--center flex--middle">|</span>
+              <a href="#Sign in">Sign in</a>
+            </nav>
+            <button class=" btn--transparent" drawer-toggle>
+              <px-icon icon="fa:fa-bars"></px-icon>
+            </button>
+          </div>
+        </px-header>
 
-          </section>
-        </px-header-layout>
+        <px-drawer id="sidedrawer" fixed overlay align="right">
+          <div class="flex flex--center flex--middle u-p-">
+            <px-brand size="48" predix></px-brand>
+          </div>
+          <aside class="u-p">
+            Side navigation
+          </aside>
+        </px-drawer>
+
+        <iron-pages id="pages" selected="{&#123;routeData.view}}" attr-for-selected="data-route" fallback-selection="catalog">
+          <div data-route="catalog">
+            <section class="u-ph tiles flex flex--wrap">
+              <px-card header-text="Blobstore" class="tile">
+                <p class="u-m0 u-p0">Use this binary large object storage (BLOB) to securely store large byte arrays.</p>
+                <div class="u-pt">
+                  <img src="https://www.predix.com/sites/default/files/catalog_4p_new_logo.png" alt="Predix Logo" height="30" />
+                </div>
+              </px-card>
+              <px-card header-text="Asset Data" class="tile">
+                <p class="u-m0 u-p0">Create and store machine asset mdoels and instances.</p>
+                <div class="u-pt">
+                  <img src="https://www.predix.com/sites/default/files/catalog_4p_new_logo.png" alt="Predix Logo" height="30" />
+                </div>
+              </px-card>
+              <px-card header-text="Time Series" class="tile">
+                <p class="u-m0 u-p0">Quickly and efficiently manage, ingest, store, and analyze data.</p>
+                <div class="u-pt">
+                  <img src="https://www.predix.com/sites/default/files/catalog_4p_new_logo.png" alt="Predix Logo" height="30" />
+                </div>
+              </px-card>
+
+            </section>
+          </div>
+
+          <div data-route="resources">
+            <h2>Resources</h2>
+          </div>
+          <div data-route="community">
+            <h2>Community</h2>
+          </div>
+
+        </iron-pages>
+
+
+      </px-header-layout>
+
   </template>
 </dom-module>
 <template id="micro-app-1" is="dom-bind">
-  <x-app id="xapp"></x-app>
+  <app-location id="location" use-hash-as-path route="{&#123;route}}"></app-location>
+  <x-app id="xapp" route="{&#123;route}}"></x-app>
 </template>
 <script type="text/javascript">
     document.addEventListener('WebComponentsReady', function(e) {
         Polymer({
             is: 'x-app',
+            properties: {
+              route: {
+                type: Object,
+                value: function(){
+                  return {
+
+                  };
+                }
+              },
+              pattern:{
+                type: String,
+                value: function(){
+                  return '/:view'
+                }
+              },
+              routeData: {
+                type: Object,
+                value: function(){
+                  return {};
+                }
+              },
+            },
             created: function() {
                 console.warn(this.tagName, 'created');
             },
             attached: function() {
                 console.warn(this.tagName, 'attached');
+                if(!this.route.path){
+                  this.set('route.path', '/');
+                }
             }
         });
         console.log('WebComponentsReady');

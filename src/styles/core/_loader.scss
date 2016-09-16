@@ -4,10 +4,13 @@
   top: 50%;
   position: fixed;
   transform: translate(-50%, -50%);
+  padding: 25px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 6px;
 
   #spinner {
     box-sizing: border-box;
-    stroke: #673AB7;
+    stroke: $primaryLight;
     stroke-width: 3px;
     transform-origin: 50%;
 

@@ -10,6 +10,10 @@ export default class PageController {
     console.log('onUpdate: ', this.path);
   }
 
+  hideLoading () {
+    // Show loading dialog while we get content
+    this.loader.classList.add('is-hidden');
+  }
   showLoading () {
     // Show loading dialog while we get content
     this.loader.classList.remove('is-hidden');
@@ -30,7 +34,7 @@ export default class PageController {
       })
       .then((responseObject) => {
         // Hide loading dialog
-        this.loader.classList.add('is-hidden');
+        this.hideLoading();
 
         if (responseObject === null) {
           throw new Error('Unexpected response from Server.');
