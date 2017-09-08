@@ -21,10 +21,8 @@ import PageController from './PageController';
 import NavDrawerView from './../view/NavDrawerView';
 
 export default class ApplicationController extends Controller {
-
   constructor () {
     super();
-    console.log('ApplicationController.constructor');
     var navDrawer = new NavDrawerView();
     var sideNavToggleButton = document.querySelector('.js-toggle-menu');
     sideNavToggleButton.addEventListener('click', () => {
@@ -38,16 +36,13 @@ export default class ApplicationController extends Controller {
       if (!anchorElements[i].href) {
         continue;
       }
-
       anchorElements[i].addEventListener('click', (clickEvent) => {
-        console.log('anchorElements.click', clickEvent);
         clickEvent.preventDefault();
         navDrawer.close();
         var router = RouterSingleton.getRouter();
         router.goToPath(clickEvent.target.href);
       });
     }
-
     // TODO: Routes for micro-apps
     var router = RouterSingleton.getRouter();
     router.addRoute('/', new PageController());

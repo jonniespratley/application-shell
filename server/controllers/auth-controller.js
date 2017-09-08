@@ -11,7 +11,7 @@ const scope = '';
 const AUTH_URL = 'https://69687fd0-c926-4e4f-8563-5c88042db69c.predix-uaa.run.aws-usw02-pr.ice.predix.io';
 const AUTH_CLIENT_ID = 'app-shell';
 const AUTH_CLIENT_SECRET = 'secret';
-const AUTH_REDIRECT = 'http://localhost:8282/oauth/callback';
+const AUTH_REDIRECT = `http://localhost:${process.env.PORT}/oauth/callback`;
 const AUTH_FORWARD_URL = `${AUTH_URL}/oauth/authorize?response_type=code&client_id=${AUTH_CLIENT_ID}&scope=&redirect_uri=${AUTH_REDIRECT}`;
 const CLIENT_AUTH = new Buffer(`${AUTH_CLIENT_ID}:${AUTH_CLIENT_SECRET}`).toString('base64');
 

@@ -2,16 +2,12 @@ export default class NavDrawerView {
 
   constructor () {
     this.rootElement = document.querySelector('.js-side-nav');
-    this.sideNavContent = this.rootElement
-      .querySelector('.js-side-nav-content');
+    this.sideNavContent = this.rootElement.querySelector('.js-side-nav-content');
     this.sideNavBody = this.rootElement.querySelector('.side-nav__body');
-
     this.rootElement.addEventListener('click', () => {
       this.close();
     });
-
     this.sideNavContent.addEventListener('click', (e) => {
-      console.log('click', e);
       e.stopPropagation();
     });
 
@@ -58,10 +54,22 @@ export default class NavDrawerView {
     }
   }
 
+
+  /**
+   * isOpen - Check if the drawer is open
+   *
+   * @return {type}  description
+   */
   isOpen () {
     return this.rootElement.classList.contains('side-nav--visible');
   }
 
+
+  /**
+   * toggle - Toggle the drawer
+   *
+   * @return {type}  description
+   */
   toggle () {
     if (this.isOpen()) {
       this.close();
@@ -70,6 +78,12 @@ export default class NavDrawerView {
     }
   }
 
+
+  /**
+   * close - Close the drawer
+   *
+   * @return {type}  description
+   */
   close () {
     this.rootElement.classList.remove('side-nav--visible');
     this.sideNavContent.classList.add('side-nav__content--animatable');
@@ -81,6 +95,12 @@ export default class NavDrawerView {
     }
   }
 
+
+  /**
+   * open - Open the drawer
+   *
+   * @return {type}  description
+   */
   open () {
     this.rootElement.classList.add('side-nav--visible');
 
