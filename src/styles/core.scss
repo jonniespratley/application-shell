@@ -1,12 +1,41 @@
-
-
-
-
 // TODO: Import styles needed for inital application layout.
+@import '_variables';
+// // Settings
+@import "px-colors-design/_settings.colors.scss";
+
+
+
+
+// Generic
+@import "px-normalize-design/_generic.normalize.scss";
+@import "px-box-sizing-design/_generic.box-sizing.scss";
+@import "px-helpers-design/_generic.helpers.scss";
+
+// Base
+@import "px-flexbox-design/_base.flexbox.scss";
+@import "px-viewport-design/_base.viewport.scss";
+
+// Meta
+
+// Objects
+@import "px-buttons-design/_objects.buttons.scss";
+$inuit-enable-btn--bare     : true;
+
+
+
+
+// Component
+// Your css goes in here
+
+// Trumps
+
+
+@import "px-spacing-responsive-design/_trumps.spacing-responsive.scss";
+@import "px-widths-responsive-design/_trumps.widths-responsive.scss";
 
 
 //@import 'px-layout/sass/px-layout-sketch.scss';
-@import '_variables';
+
 @import 'core/_colors';
 @import 'core/_card';
 @import 'core/_core';

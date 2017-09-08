@@ -3,6 +3,7 @@ const pathConfigs = require('../models/path-config.js');
 
 class StaticPageController {
   constructor() {}
+  
     // This method looks at the request path and renders the appropriate handlebars template
   onRequest(req, res) {
     var pathConfig = pathConfigs.getConfig(req.path);

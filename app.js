@@ -26,4 +26,4 @@ serverController.addEndpoint('/oauth*', new AuthController(
 ));
 // The static page controller serves the basic form of the pages
 serverController.addEndpoint('/*', new StaticPageController());
-serverController.startServer(process.env.PORT);
+serverController.startServer(process.env.PORT, true);

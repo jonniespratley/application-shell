@@ -65,8 +65,8 @@ gulp.task('styles:sass', function() {
     .pipe(gulpif(GLOBAL.config.env !== 'prod', sourcemaps.init()))
     .pipe(sass(sassOptions).on('error', sass.logError))
     .pipe(autoprefixer(AUTOPREFIXER_BROWSERS))
-    .pipe(gulpif(GLOBAL.config.env === 'prod', minifyCSS()))
-    .pipe(license(GLOBAL.config.license, GLOBAL.config.licenseOptions))
+  //  .pipe(gulpif(GLOBAL.config.env === 'prod', minifyCSS()))
+    //.pipe(license(GLOBAL.config.license, GLOBAL.config.licenseOptions))
     .pipe(gulpif(GLOBAL.config.env !== 'prod', sourcemaps.write()))
     .pipe(gulp.dest(GLOBAL.config.dest));
 });

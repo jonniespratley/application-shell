@@ -48,6 +48,7 @@ export default class ApplicationController extends Controller {
       });
     }
 
+    // TODO: Routes for micro-apps
     var router = RouterSingleton.getRouter();
     router.addRoute('/', new PageController());
     router.addRoute('/url-1', new PageController());

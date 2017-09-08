@@ -30,9 +30,10 @@ var pathConfigs = {
     remoteStyles: sharedStyles,
     remoteScripts: ['/scripts/static-page.js'],
     remoteImports: [
+      /*
       '/bower_components/polymer/polymer.html',
-      //'/bower_components/px-theme/px-theme.html',
-      // /'/bower_components/px-theme/px-app.html',
+      '/bower_components/px-theme/px-theme.html',
+      '/bower_components/px-theme/px-app.html',
       '/bower_components/app-route/app-location.html',
       '/bower_components/app-route/app-route.html',
       '/bower_components/iron-input/iron-input.html',
@@ -42,6 +43,7 @@ var pathConfigs = {
       '/bower_components/px-partials/px-partials.html',
       '/bower_components/px-layout/px-layout.html',
       '/bower_components/px-table-view/px-table-view.html'
+      */
     ]
   },
   '/url-2': {
@@ -58,9 +60,11 @@ var pathConfigs = {
     remoteStyles: sharedStyles,
     remoteScripts: ['/scripts/static-page.js'],
     remoteImports: [
+      /*
       '/bower_components/polymer/polymer.html',
       '/bower_components/px-layout/px-layout.html',
       '/bower_components/px-table-view/px-table-view.html'
+      */
     ]
   },
   '/app-shell': {

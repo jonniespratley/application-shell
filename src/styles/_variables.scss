@@ -1,7 +1,28 @@
-$primary      : #333;
-$primaryLight : #38b5ec;
-$primaryDark  : #111;
+$primary      : #2c404c;
+$primaryLight : #086e87;
+$primaryDark  : #1b2a33;
 $secondary    : #407C00;
 $secondaryDark: #4527A0;
 $toast        : #404040;
-$background   : #FAFAFA;
+$background   : #8b8d8f;
+$primary-blue: blue;
+$primary-blue-hover: blue;
+$primary-blue-pressed: blue;
+
+// Tools
+$inuit-enable-layout--small : true;
+$inuit-enable-layout--flush : true;
+$inuit-enable-layout--full  : true;
+$inuit-enable-margins--tiny             : true;
+$inuit-enable-margins--small            : true;
+$inuit-enable-margins--large            : true;
+$inuit-enable-margins--huge             : true;
+$inuit-enable-margins--none             : true;
+$inuit-enable-margins--rtl              : true;
+$inuit-enable-margins--negative-tiny    : true;
+$inuit-enable-paddings                  : true;
+$inuit-enable-paddings--tiny            : true;
+$inuit-enable-paddings--small           : true;
+$inuit-enable-paddings--large           : true;
+$inuit-enable-paddings--huge            : true;
+$inuit-enable-paddings--none            : true;
